@@ -13,27 +13,33 @@ enum Velocidades : Int{
 
 class Auto{
     var velocidad = Velocidades(velocidadInicial : .Apagado)
-    var velocidadEnCadena = "Apagado"
+    
     init(){
         self.velocidad
     }
     func cambioDeVelocidad( ) -> ( actual : Int, velocidadEnCadena: String){
         
-        if(velocidad == Velocidades(velocidadInicial : .Apagado)) {
-            velocidad = Velocidades(velocidadInicial : .VelocidadBaja)
-            velocidadEnCadena = "Velocidad baja"
-        }else if (velocidad == Velocidades(velocidadInicial : .VelocidadBaja)){
-            velocidad = Velocidades(velocidadInicial : .VelocidadMedia)
-            velocidadEnCadena = "Velocidad media"
-        }else if (velocidad == Velocidades(velocidadInicial : .VelocidadMedia)) {
-            velocidad = Velocidades(velocidadInicial : .VelocidadAlta)
-            velocidadEnCadena = "Velocidad alta"
-        }else {
-            velocidad = Velocidades(velocidadInicial : .VelocidadMedia)
-            velocidadEnCadena = "Velocidad media"
+        let velocidadAuxiliar = velocidad
+        
+        if (velocidadAuxiliar) == .Apagado {
+            velocidad = .VelocidadBaja
+        }
+            
+        else if (velocidadAuxiliar) == .VelocidadBaja {
+            velocidad = .VelocidadMedia
+        }
+            
+        else if (velocidadAuxiliar) == .VelocidadMedia {
+            velocidad = .VelocidadAlta
+        }
+            
+        else if (velocidadAuxiliar) == .VelocidadAlta {
+            velocidad = .VelocidadMedia
         }
         
-        return (velocidad.rawValue, velocidadEnCadena)
+        let resultado = (velocidadAuxiliar.rawValue, "\(velocidadAuxiliar)")
+        
+        return resultado
     }
     
 }
